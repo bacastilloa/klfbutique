@@ -17,11 +17,11 @@
 			<p:panel>
 				<p:panelGrid columns="2">
 					<h:outputText value="Id de usuario:" />
-					<p:inputText value="#{beanUsuLogin.idSegUsuario}" />
+					<p:inputText value="#{beanSegLogin.idSegUsuario}" />
 					<h:outputText value="Clave:" />
-					<p:password value="#{beanUsuLogin.clave}" />
+					<p:password value="#{beanSegLogin.clave}" />
 					<p:commandButton value="Login"
-						action="#{beanUsuLogin.actionLogin()}" icon="pi pi-key"></p:commandButton>
+						action="#{beanSegLogin.actionLogin()}" icon="pi pi-key"></p:commandButton>
 				</p:panelGrid>
 			</p:panel>
 		</h:form>
@@ -30,7 +30,7 @@
 				<p:panelGrid columns="2">
 					<h:outputText value="Inicializar datos" />
 					<p:commandButton value="Inicializar"
-						actionListener="#{beanUsuLogin.actionListenerInicialiarDemo()}"
+						actionListener="#{beanSegLogin.actionListenerInicialiarDemo()}"
 						icon="pi pi-close"></p:commandButton>
 				</p:panelGrid>
 			</p:panel>

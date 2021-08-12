@@ -12,11 +12,11 @@
 	<h:form>
 		<p:menubar>
 			<f:facet name="options">
-				<p:menuButton value="#{beanUsuLogin.loginDTO.correo}"
+				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
 					icon="pi pi-user">
 					<p:menuitem value="Perfil"></p:menuitem>
 					<p:menuitem value="Cerrar sesión" icon="pi pi-sign-out"
-						action="#{beanUsuLogin.actionCerrarSesion()}"></p:menuitem>
+						action="#{beanSegLogin.actionCerrarSesion()}"></p:menuitem>
 				</p:menuButton>
 			</f:facet>
 		</p:menubar>
@@ -25,14 +25,14 @@
 	<div align="center">
 		<h:form>
 			<p:panel style="width:50%">
-				<p:staticMessage severity="info" summary="SISTEMA BUTIQUE KLF"
+				<p:staticMessage severity="info" summary="SISTEMA MINIMARKETDEMO"
 					style="width: 100%" />
-				<p:dataView value="#{beanUsuLogin.loginDTO.listaModulos}"
+				<p:dataView value="#{beanSegLogin.loginDTO.listaModulos}"
 					var="modulo" layout="grid" gridIcon="pi pi-th-large"
 					emptyMessage="No tiene módulos asignados. Consulte al administrador.">
 					<p:dataViewGridItem>
 						<p:commandLink
-							action="#{beanUsuLogin.actionMenu(modulo.rutaAcceso)}">
+							action="#{beanSegLogin.actionMenu(modulo.rutaAcceso)}">
 							<p:panelGrid columns="1">
 								<h:outputText value="#{modulo.nombreModulo}" />
 								<h:outputText value="#{modulo.rutaAcceso}" />
