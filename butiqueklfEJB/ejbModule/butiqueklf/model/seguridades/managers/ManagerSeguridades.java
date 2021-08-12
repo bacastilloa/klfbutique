@@ -160,6 +160,7 @@ public class ManagerSeguridades {
     
     public SegModulo insertarModulo(SegModulo nuevoModulo) throws Exception {
     	SegModulo modulo=new SegModulo();
+    	modulo.setIdSegModulo(nuevoModulo.getIdSegModulo());
     	modulo.setNombreModulo(nuevoModulo.getNombreModulo());
     	modulo.setRutaAcceso(nuevoModulo.getRutaAcceso());
     	mDAO.insertar(modulo);
@@ -195,6 +196,7 @@ public class ManagerSeguridades {
     	SegModulo modulo=(SegModulo)mDAO.findById(SegModulo.class, idSegModulo);
     	//crear la relacion:
     	SegAsignacion asignacion=new SegAsignacion();
+    	asignacion.getIdSegAsignacion();
     	asignacion.setSegModulo(modulo);
     	asignacion.setSegUsuario(usuario);
     	//guardar la asignacion:
