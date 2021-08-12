@@ -15,7 +15,7 @@ public class SegAsignacion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_seg_asignacion")
+	@Column(name="id_seg_asignacion", unique=true, nullable=false)
 	private Integer idSegAsignacion;
 
 	//bi-directional many-to-one association to SegModulo

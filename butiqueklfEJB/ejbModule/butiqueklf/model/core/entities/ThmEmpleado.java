@@ -17,16 +17,16 @@ public class ThmEmpleado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_thm_empleado")
+	@Column(name="id_thm_empleado", unique=true, nullable=false)
 	private Integer idThmEmpleado;
 
-	@Column(name="cuota_prestamo")
-	private BigDecimal cuotaPrestamo;
+	@Column(name="couta_prestamo", nullable=false, precision=7, scale=2)
+	private BigDecimal coutaPrestamo;
 
-	@Column(name="horas_extra")
+	@Column(name="horas_extra", nullable=false)
 	private Integer horasExtra;
 
-	@Column(name="horas_trabajadas")
+	@Column(name="horas_trabajadas", nullable=false)
 	private Integer horasTrabajadas;
 
 	//bi-directional many-to-one association to SegUsuario
@@ -39,9 +39,9 @@ public class ThmEmpleado implements Serializable {
 	@JoinColumn(name="id_thm_cargo")
 	private ThmCargo thmCargo;
 
-	//bi-directional many-to-one association to ThmRolCabecera
+	//bi-directional many-to-one association to VenFacturaCabezera
 	@OneToMany(mappedBy="thmEmpleado")
-	private List<ThmRolCabecera> thmRolCabeceras;
+	private List<VenFacturaCabezera> venFacturaCabezeras;
 
 	public ThmEmpleado() {
 	}
@@ -54,12 +54,12 @@ public class ThmEmpleado implements Serializable {
 		this.idThmEmpleado = idThmEmpleado;
 	}
 
-	public BigDecimal getCuotaPrestamo() {
-		return this.cuotaPrestamo;
+	public BigDecimal getCoutaPrestamo() {
+		return this.coutaPrestamo;
 	}
 
-	public void setCuotaPrestamo(BigDecimal cuotaPrestamo) {
-		this.cuotaPrestamo = cuotaPrestamo;
+	public void setCoutaPrestamo(BigDecimal coutaPrestamo) {
+		this.coutaPrestamo = coutaPrestamo;
 	}
 
 	public Integer getHorasExtra() {
@@ -94,26 +94,26 @@ public class ThmEmpleado implements Serializable {
 		this.thmCargo = thmCargo;
 	}
 
-	public List<ThmRolCabecera> getThmRolCabeceras() {
-		return this.thmRolCabeceras;
+	public List<VenFacturaCabezera> getVenFacturaCabezeras() {
+		return this.venFacturaCabezeras;
 	}
 
-	public void setThmRolCabeceras(List<ThmRolCabecera> thmRolCabeceras) {
-		this.thmRolCabeceras = thmRolCabeceras;
+	public void setVenFacturaCabezeras(List<VenFacturaCabezera> venFacturaCabezeras) {
+		this.venFacturaCabezeras = venFacturaCabezeras;
 	}
 
-	public ThmRolCabecera addThmRolCabecera(ThmRolCabecera thmRolCabecera) {
-		getThmRolCabeceras().add(thmRolCabecera);
-		thmRolCabecera.setThmEmpleado(this);
+	public VenFacturaCabezera addVenFacturaCabezera(VenFacturaCabezera venFacturaCabezera) {
+		getVenFacturaCabezeras().add(venFacturaCabezera);
+		venFacturaCabezera.setThmEmpleado(this);
 
-		return thmRolCabecera;
+		return venFacturaCabezera;
 	}
 
-	public ThmRolCabecera removeThmRolCabecera(ThmRolCabecera thmRolCabecera) {
-		getThmRolCabeceras().remove(thmRolCabecera);
-		thmRolCabecera.setThmEmpleado(null);
+	public VenFacturaCabezera removeVenFacturaCabezera(VenFacturaCabezera venFacturaCabezera) {
+		getVenFacturaCabezeras().remove(venFacturaCabezera);
+		venFacturaCabezera.setThmEmpleado(null);
 
-		return thmRolCabecera;
+		return venFacturaCabezera;
 	}
 
 }

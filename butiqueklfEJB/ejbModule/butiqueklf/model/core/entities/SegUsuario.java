@@ -16,19 +16,24 @@ public class SegUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_seg_usuario")
+	@Column(name="id_seg_usuario", unique=true, nullable=false)
 	private Integer idSegUsuario;
 
 	private Boolean activo;
 
+	@Column(nullable=false, length=50)
 	private String apellidos;
 
+	@Column(nullable=false, length=50)
 	private String clave;
 
+	@Column(nullable=false, length=50)
 	private String codigo;
 
+	@Column(nullable=false, length=50)
 	private String correo;
 
+	@Column(nullable=false, length=50)
 	private String nombres;
 
 	//bi-directional many-to-one association to SegAsignacion
@@ -118,6 +123,28 @@ public class SegUsuario implements Serializable {
 		segAsignacion.setSegUsuario(null);
 
 		return segAsignacion;
+	}
+
+	public List<ThmEmpleado> getThmEmpleados() {
+		return this.thmEmpleados;
+	}
+
+	public void setThmEmpleados(List<ThmEmpleado> thmEmpleados) {
+		this.thmEmpleados = thmEmpleados;
+	}
+
+	public ThmEmpleado addThmEmpleado(ThmEmpleado thmEmpleado) {
+		getThmEmpleados().add(thmEmpleado);
+		thmEmpleado.setSegUsuario(this);
+
+		return thmEmpleado;
+	}
+
+	public ThmEmpleado removeThmEmpleado(ThmEmpleado thmEmpleado) {
+		getThmEmpleados().remove(thmEmpleado);
+		thmEmpleado.setSegUsuario(null);
+
+		return thmEmpleado;
 	}
 
 }

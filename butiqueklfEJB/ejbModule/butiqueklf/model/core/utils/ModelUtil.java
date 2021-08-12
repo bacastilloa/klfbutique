@@ -1,4 +1,4 @@
-package butiqueklf.model.core.util;
+package butiqueklf.model.core.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

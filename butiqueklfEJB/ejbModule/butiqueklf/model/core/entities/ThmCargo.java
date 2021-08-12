@@ -17,14 +17,14 @@ public class ThmCargo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_thm_cargo")
+	@Column(name="id_thm_cargo", unique=true, nullable=false)
 	private Integer idThmCargo;
 
-	@Column(name="nombre_cargo")
+	@Column(name="nombre_cargo", nullable=false, length=50)
 	private String nombreCargo;
 
-	@Column(name="remuneracion_mensual")
-	private BigDecimal remuneracionMensual;
+	@Column(nullable=false, precision=7, scale=2)
+	private BigDecimal sueldo;
 
 	//bi-directional many-to-one association to ThmEmpleado
 	@OneToMany(mappedBy="thmCargo")
@@ -49,12 +49,12 @@ public class ThmCargo implements Serializable {
 		this.nombreCargo = nombreCargo;
 	}
 
-	public BigDecimal getRemuneracionMensual() {
-		return this.remuneracionMensual;
+	public BigDecimal getSueldo() {
+		return this.sueldo;
 	}
 
-	public void setRemuneracionMensual(BigDecimal remuneracionMensual) {
-		this.remuneracionMensual = remuneracionMensual;
+	public void setSueldo(BigDecimal sueldo) {
+		this.sueldo = sueldo;
 	}
 
 	public List<ThmEmpleado> getThmEmpleados() {

@@ -16,13 +16,13 @@ public class SegModulo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_seg_modulo")
+	@Column(name="id_seg_modulo", unique=true, nullable=false)
 	private Integer idSegModulo;
 
-	@Column(name="nombre_modulo")
+	@Column(name="nombre_modulo", nullable=false, length=50)
 	private String nombreModulo;
 
-	@Column(name="ruta_acceso")
+	@Column(name="ruta_acceso", nullable=false, length=50)
 	private String rutaAcceso;
 
 	//bi-directional many-to-one association to SegAsignacion

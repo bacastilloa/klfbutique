@@ -6,18 +6,18 @@ import java.util.List;
 
 
 /**
- * The persistent class for the cliente database table.
+ * The persistent class for the cli_cliente database table.
  * 
  */
 @Entity
-@Table(name="cliente")
-@NamedQuery(name="Cliente.findAll", query="SELECT c FROM Cliente c")
-public class Cliente implements Serializable {
+@Table(name="cli_cliente")
+@NamedQuery(name="CliCliente.findAll", query="SELECT c FROM CliCliente c")
+public class CliCliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="cedula_cli", unique=true, nullable=false, length=10)
-	private String cedulaCli;
+	@Column(name="cedula_cliente", unique=true, nullable=false, length=10)
+	private String cedulaCliente;
 
 	@Column(name="apellido_cli", nullable=false, length=50)
 	private String apellidoCli;
@@ -34,19 +34,19 @@ public class Cliente implements Serializable {
 	@Column(name="telefono_cli", nullable=false, length=50)
 	private String telefonoCli;
 
-	//bi-directional many-to-one association to FacturaCabezera
-	@OneToMany(mappedBy="cliente")
-	private List<FacturaCabezera> facturaCabezeras;
+	//bi-directional many-to-one association to VenFacturaCabezera
+	@OneToMany(mappedBy="cliCliente")
+	private List<VenFacturaCabezera> venFacturaCabezeras;
 
-	public Cliente() {
+	public CliCliente() {
 	}
 
-	public String getCedulaCli() {
-		return this.cedulaCli;
+	public String getCedulaCliente() {
+		return this.cedulaCliente;
 	}
 
-	public void setCedulaCli(String cedulaCli) {
-		this.cedulaCli = cedulaCli;
+	public void setCedulaCliente(String cedulaCliente) {
+		this.cedulaCliente = cedulaCliente;
 	}
 
 	public String getApellidoCli() {
@@ -89,26 +89,26 @@ public class Cliente implements Serializable {
 		this.telefonoCli = telefonoCli;
 	}
 
-	public List<FacturaCabezera> getFacturaCabezeras() {
-		return this.facturaCabezeras;
+	public List<VenFacturaCabezera> getVenFacturaCabezeras() {
+		return this.venFacturaCabezeras;
 	}
 
-	public void setFacturaCabezeras(List<FacturaCabezera> facturaCabezeras) {
-		this.facturaCabezeras = facturaCabezeras;
+	public void setVenFacturaCabezeras(List<VenFacturaCabezera> venFacturaCabezeras) {
+		this.venFacturaCabezeras = venFacturaCabezeras;
 	}
 
-	public FacturaCabezera addFacturaCabezera(FacturaCabezera facturaCabezera) {
-		getFacturaCabezeras().add(facturaCabezera);
-		facturaCabezera.setCliente(this);
+	public VenFacturaCabezera addVenFacturaCabezera(VenFacturaCabezera venFacturaCabezera) {
+		getVenFacturaCabezeras().add(venFacturaCabezera);
+		venFacturaCabezera.setCliCliente(this);
 
-		return facturaCabezera;
+		return venFacturaCabezera;
 	}
 
-	public FacturaCabezera removeFacturaCabezera(FacturaCabezera facturaCabezera) {
-		getFacturaCabezeras().remove(facturaCabezera);
-		facturaCabezera.setCliente(null);
+	public VenFacturaCabezera removeVenFacturaCabezera(VenFacturaCabezera venFacturaCabezera) {
+		getVenFacturaCabezeras().remove(venFacturaCabezera);
+		venFacturaCabezera.setCliCliente(null);
 
-		return facturaCabezera;
+		return venFacturaCabezera;
 	}
 
 }

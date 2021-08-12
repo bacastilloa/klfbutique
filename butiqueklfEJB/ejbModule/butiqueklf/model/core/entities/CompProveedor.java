@@ -6,18 +6,18 @@ import java.util.List;
 
 
 /**
- * The persistent class for the proveedores database table.
+ * The persistent class for the comp_proveedor database table.
  * 
  */
 @Entity
-@Table(name="proveedores")
-@NamedQuery(name="Proveedore.findAll", query="SELECT p FROM Proveedore p")
-public class Proveedore implements Serializable {
+@Table(name="comp_proveedor")
+@NamedQuery(name="CompProveedor.findAll", query="SELECT c FROM CompProveedor c")
+public class CompProveedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="ruc_prove", unique=true, nullable=false, precision=13)
-	private long rucProve;
+	@Column(name="ruc_comp_proveedor", unique=true, nullable=false, length=13)
+	private String rucCompProveedor;
 
 	@Column(name="apellido_prove", nullable=false, length=50)
 	private String apellidoProve;
@@ -34,19 +34,19 @@ public class Proveedore implements Serializable {
 	@Column(name="telefono_prove", nullable=false, length=50)
 	private String telefonoProve;
 
-	//bi-directional many-to-one association to DetalleCompra
-	@OneToMany(mappedBy="proveedore")
-	private List<DetalleCompra> detalleCompras;
+	//bi-directional many-to-one association to CompProveedorDetalle
+	@OneToMany(mappedBy="compProveedor")
+	private List<CompProveedorDetalle> compProveedorDetalles;
 
-	public Proveedore() {
+	public CompProveedor() {
 	}
 
-	public long getRucProve() {
-		return this.rucProve;
+	public String getRucCompProveedor() {
+		return this.rucCompProveedor;
 	}
 
-	public void setRucProve(long rucProve) {
-		this.rucProve = rucProve;
+	public void setRucCompProveedor(String rucCompProveedor) {
+		this.rucCompProveedor = rucCompProveedor;
 	}
 
 	public String getApellidoProve() {
@@ -89,26 +89,26 @@ public class Proveedore implements Serializable {
 		this.telefonoProve = telefonoProve;
 	}
 
-	public List<DetalleCompra> getDetalleCompras() {
-		return this.detalleCompras;
+	public List<CompProveedorDetalle> getCompProveedorDetalles() {
+		return this.compProveedorDetalles;
 	}
 
-	public void setDetalleCompras(List<DetalleCompra> detalleCompras) {
-		this.detalleCompras = detalleCompras;
+	public void setCompProveedorDetalles(List<CompProveedorDetalle> compProveedorDetalles) {
+		this.compProveedorDetalles = compProveedorDetalles;
 	}
 
-	public DetalleCompra addDetalleCompra(DetalleCompra detalleCompra) {
-		getDetalleCompras().add(detalleCompra);
-		detalleCompra.setProveedore(this);
+	public CompProveedorDetalle addCompProveedorDetalle(CompProveedorDetalle compProveedorDetalle) {
+		getCompProveedorDetalles().add(compProveedorDetalle);
+		compProveedorDetalle.setCompProveedor(this);
 
-		return detalleCompra;
+		return compProveedorDetalle;
 	}
 
-	public DetalleCompra removeDetalleCompra(DetalleCompra detalleCompra) {
-		getDetalleCompras().remove(detalleCompra);
-		detalleCompra.setProveedore(null);
+	public CompProveedorDetalle removeCompProveedorDetalle(CompProveedorDetalle compProveedorDetalle) {
+		getCompProveedorDetalles().remove(compProveedorDetalle);
+		compProveedorDetalle.setCompProveedor(null);
 
-		return detalleCompra;
+		return compProveedorDetalle;
 	}
 
 }
